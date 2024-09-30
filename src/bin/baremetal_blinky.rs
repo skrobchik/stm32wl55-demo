@@ -1,8 +1,8 @@
 #![no_std]
 #![no_main]
 
-use panic_halt as _;
 use cortex_m_rt::entry;
+use panic_halt as _;
 
 const RCC_AHB2ENR: *mut u32 = (0x5800_0000 + 0x04C) as *mut u32;
 const GPIOB_BASE: usize = 0x4800_0400;
@@ -27,20 +27,22 @@ fn main() -> ! {
     // Configure PB9 as output
     let pin = 9;
     let mut val: u32 = unsafe { GPIOB_MODER.read_volatile() };
-    val &= !(0b11 << pin);
+    val &= !(0b11 << (pin * 2));
     val |= 0b01 << (pin * 2); // 0b01 is output
-    unsafe { GPIOB_MODER.write_volatile(val); }
+    unsafe {
+        GPIOB_MODER.write_volatile(val);
+    }
 
     let mut val = unsafe { GPIOB_ODR.read_volatile() };
     loop {
-        // Set pin to high
-        val |= 0b1 << pin;
-        unsafe { GPIOB_ODR.write_volatile(val) };
-        delay(10_000);
-
         // Set pin to low
         val &= !(0b1 << pin);
         unsafe { GPIOB_ODR.write_volatile(val) };
-        delay(10_000);
+        delay(250_000);
+
+        // Set pin to high
+        val |= 0b1 << pin;
+        unsafe { GPIOB_ODR.write_volatile(val) };
+        delay(250_000);
     }
 }
