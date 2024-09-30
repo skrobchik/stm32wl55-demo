@@ -148,6 +148,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8d5439c4ad607c3c23abf66de8c8bf57ba8adcd1f129e699851a6e43935d339d"
 
 [[package]]
+name = "nucleo-wl55jc-bsp"
+version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2edf39105489262df23cfd1ec7ae86858c0eb04c25f964e922734581c19a61ad"
+dependencies = [
+ "stm32wlxx-hal",
+]
+
+[[package]]
 name = "num-integer"
 version = "0.1.46"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -278,6 +287,7 @@ dependencies = [
  "cortex-m-rt",
  "defmt",
  "defmt-rtt",
+ "nucleo-wl55jc-bsp",
  "panic-halt",
  "panic-probe",
  "stm32wlxx-hal",
