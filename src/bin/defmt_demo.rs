@@ -3,11 +3,11 @@
 
 use core::panic;
 
-use cortex_m_rt::entry;
 use defmt_rtt as _;
 use panic_probe as _;
+use stm32wlxx_hal::{self as hal};
 
-#[entry]
+#[hal::cortex_m_rt::entry]
 fn main() -> ! {
     defmt::info!("Hello World!\n");
 

@@ -1,5 +1,3 @@
-// Prints over RTT when the state of B3 on the NUCLEO-WL55JC2 changes using interrupts.
-
 #![no_std]
 #![no_main]
 

@@ -1,8 +1,8 @@
 #![no_std]
 #![no_main]
 
-use cortex_m_rt::entry;
 use panic_halt as _;
+use stm32wlxx_hal::{self as hal};
 
 const RCC_AHB2ENR: *mut u32 = (0x5800_0000 + 0x04C) as *mut u32;
 const GPIOB_BASE: usize = 0x4800_0400;
@@ -17,7 +17,7 @@ fn delay(mut ticks: u32) {
     }
 }
 
-#[entry]
+#[hal::cortex_m_rt::entry]
 fn main() -> ! {
     // Enable clock for GPIO Port B
     unsafe {
