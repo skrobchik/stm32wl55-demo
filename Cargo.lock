@@ -276,6 +276,7 @@ checksum = "41c1f5cf5ee7f359ad4ca03f17628a01c43703e7d093e5bae9bef6b1ed55818f"
 dependencies = [
  "bare-metal 1.0.0",
  "cortex-m",
+ "cortex-m-rt",
  "vcell",
 ]
 
@@ -301,6 +302,7 @@ checksum = "093e64de63a4f602a00476eb86288c96a690c2271c886b8242dc3279c176b4f8"
 dependencies = [
  "cfg-if",
  "cortex-m",
+ "cortex-m-rt",
  "embedded-hal",
  "nb 1.1.0",
  "num-integer",
